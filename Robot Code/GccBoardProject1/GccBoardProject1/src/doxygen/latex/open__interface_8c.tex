@@ -1,0 +1,178 @@
+\hypertarget{open__interface_8c}{}\section{open\+\_\+interface.\+c File Reference}
+\label{open__interface_8c}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+
+
+A\+P\+I to communicate with Robot.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}open\+\_\+interface.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structoi__t}{oi\+\_\+t} $\ast$ \hyperlink{open__interface_8c_aad249dffdf79454de76e09092a0445f5}{oi\+\_\+alloc} ()
+\begin{DoxyCompactList}\small\item\em Allocate memory for a the sensor data. \end{DoxyCompactList}\item 
+\hypertarget{open__interface_8c_abe8995b948a2f47938a574b59c2dda7e}{}void \hyperlink{open__interface_8c_abe8995b948a2f47938a574b59c2dda7e}{oi\+\_\+free} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$self)\label{open__interface_8c_abe8995b948a2f47938a574b59c2dda7e}
+
+\begin{DoxyCompactList}\small\item\em Free memory from a pointer to the sensor data struct. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a9108ba8c791d0e97444c03b2f40b278a}{oi\+\_\+init} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Initialize the Create. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a9129559bba5ff9dc7e4df64330864674}{oi\+\_\+update} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Update the Create. This will update all the sensor data and store it in the \hyperlink{structoi__t}{oi\+\_\+t} struct. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a53fa762ab03f4b109f3f687180f62ba6}{oi\+\_\+set\+\_\+leds} (uint8\+\_\+t play\+\_\+led, uint8\+\_\+t advance\+\_\+led, uint8\+\_\+t power\+\_\+color, uint8\+\_\+t power\+\_\+intensity)
+\begin{DoxyCompactList}\small\item\em Sets the L\+E\+Ds on the i\+Robot. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a2dfa9fddb3b143e74605cc2f1ba7544c}{oi\+\_\+set\+\_\+wheels} (int16\+\_\+t right\+\_\+wheel, int16\+\_\+t left\+\_\+wheel)
+\begin{DoxyCompactList}\small\item\em Drive wheels directly; speeds are in mm / sec. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a2aa2471ceeb58d94f97bf379105a0a0f}{oi\+\_\+load\+\_\+song} (int song\+\_\+index, int num\+\_\+notes, unsigned char $\ast$notes, unsigned char $\ast$duration)
+\begin{DoxyCompactList}\small\item\em Load song sequence. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a353765c4297939ef0390a47ca869af56}{oi\+\_\+play\+\_\+song} (int index)
+\begin{DoxyCompactList}\small\item\em Plays a given song; use oi\+\_\+load\+\_\+song(...) first. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_a6c701c5d6642b0f7128b03542a09ed76}{go\+\_\+charge} (void)
+\begin{DoxyCompactList}\small\item\em Runs default go charge program; robot will search for dock. \end{DoxyCompactList}\item 
+void \hyperlink{open__interface_8c_afb384efe98529a12f6293af066381cd5}{oi\+\_\+byte\+\_\+tx} (unsigned char value)
+\begin{DoxyCompactList}\small\item\em Transmit a byte of data over the serial connection to the Create. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{open__interface_8c_a3147d041ba8ea3524f0fbefbfa487e38}{oi\+\_\+byte\+\_\+rx} (void)
+\begin{DoxyCompactList}\small\item\em Receive a byte of data from the Create serial connection. Blocks until a byte is received. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A\+P\+I to communicate with Robot. 
+
+\begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{open__interface_8c_a6c701c5d6642b0f7128b03542a09ed76}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!go\+\_\+charge@{go\+\_\+charge}}
+\index{go\+\_\+charge@{go\+\_\+charge}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{go\+\_\+charge(void)}]{\setlength{\rightskip}{0pt plus 5cm}void go\+\_\+charge (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a6c701c5d6642b0f7128b03542a09ed76}
+
+
+Runs default go charge program; robot will search for dock. 
+
+Calls in built in demo to send the i\+Robot to an open home base This will cause the i\+Robot to enter the Passive state \hypertarget{open__interface_8c_aad249dffdf79454de76e09092a0445f5}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+alloc@{oi\+\_\+alloc}}
+\index{oi\+\_\+alloc@{oi\+\_\+alloc}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+alloc()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf oi\+\_\+t}$\ast$ oi\+\_\+alloc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_aad249dffdf79454de76e09092a0445f5}
+
+
+Allocate memory for a the sensor data. 
+
+Allocate memory for the oi\+\_\+sensor\+\_\+t struct. \hypertarget{open__interface_8c_a3147d041ba8ea3524f0fbefbfa487e38}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+byte\+\_\+rx@{oi\+\_\+byte\+\_\+rx}}
+\index{oi\+\_\+byte\+\_\+rx@{oi\+\_\+byte\+\_\+rx}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+byte\+\_\+rx(void)}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char oi\+\_\+byte\+\_\+rx (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a3147d041ba8ea3524f0fbefbfa487e38}
+
+
+Receive a byte of data from the Create serial connection. Blocks until a byte is received. 
+
+\begin{DoxyReturn}{Returns}
+8-\/bit value returned from the Create 
+\end{DoxyReturn}
+\hypertarget{open__interface_8c_afb384efe98529a12f6293af066381cd5}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+byte\+\_\+tx@{oi\+\_\+byte\+\_\+tx}}
+\index{oi\+\_\+byte\+\_\+tx@{oi\+\_\+byte\+\_\+tx}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+byte\+\_\+tx(unsigned char value)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+byte\+\_\+tx (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{value}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_afb384efe98529a12f6293af066381cd5}
+
+
+Transmit a byte of data over the serial connection to the Create. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & 8-\/bit value to transmit to the Create \\
+\hline
+\end{DoxyParams}
+\hypertarget{open__interface_8c_a9108ba8c791d0e97444c03b2f40b278a}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+init@{oi\+\_\+init}}
+\index{oi\+\_\+init@{oi\+\_\+init}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+init(oi\+\_\+t $\ast$self)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{self}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a9108ba8c791d0e97444c03b2f40b278a}
+
+
+Initialize the Create. 
+
+Initialize the Create. This must be called first. \hypertarget{open__interface_8c_a2aa2471ceeb58d94f97bf379105a0a0f}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+load\+\_\+song@{oi\+\_\+load\+\_\+song}}
+\index{oi\+\_\+load\+\_\+song@{oi\+\_\+load\+\_\+song}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+load\+\_\+song(int song\+\_\+index, int num\+\_\+notes, unsigned char $\ast$notes, unsigned char $\ast$duration)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+load\+\_\+song (
+\begin{DoxyParamCaption}
+\item[{int}]{song\+\_\+index, }
+\item[{int}]{num\+\_\+notes, }
+\item[{unsigned char $\ast$}]{notes, }
+\item[{unsigned char $\ast$}]{duration}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a2aa2471ceeb58d94f97bf379105a0a0f}
+
+
+Load song sequence. 
+
+Loads a song onto the i\+Robot Create song index, number of notes, notes aray, duration array \hypertarget{open__interface_8c_a353765c4297939ef0390a47ca869af56}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+play\+\_\+song@{oi\+\_\+play\+\_\+song}}
+\index{oi\+\_\+play\+\_\+song@{oi\+\_\+play\+\_\+song}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+play\+\_\+song(int index)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+play\+\_\+song (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a353765c4297939ef0390a47ca869af56}
+
+
+Plays a given song; use oi\+\_\+load\+\_\+song(...) first. 
+
+Play song. \hypertarget{open__interface_8c_a53fa762ab03f4b109f3f687180f62ba6}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+set\+\_\+leds@{oi\+\_\+set\+\_\+leds}}
+\index{oi\+\_\+set\+\_\+leds@{oi\+\_\+set\+\_\+leds}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+set\+\_\+leds(uint8\+\_\+t play\+\_\+led, uint8\+\_\+t advance\+\_\+led, uint8\+\_\+t power\+\_\+color, uint8\+\_\+t power\+\_\+intensity)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+set\+\_\+leds (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{play\+\_\+led, }
+\item[{uint8\+\_\+t}]{advance\+\_\+led, }
+\item[{uint8\+\_\+t}]{power\+\_\+color, }
+\item[{uint8\+\_\+t}]{power\+\_\+intensity}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a53fa762ab03f4b109f3f687180f62ba6}
+
+
+Sets the L\+E\+Ds on the i\+Robot. 
+
+Set the L\+E\+D\+S on the Create.
+
+Set the state of the three L\+E\+Ds on the i\+Robot (Power, Play, Advance).  uint8\+\_\+t either 0 (off) or 1 (on)  uint8\+\_\+t either 0 (off) or 1 (on)  uint8\+\_\+t the color of the power L\+E\+D; 0 = green, 255 = red  uint8\+\_\+t the intensity of the power L\+E\+D; 0 = off, 255 = full intensity \hypertarget{open__interface_8c_a2dfa9fddb3b143e74605cc2f1ba7544c}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+set\+\_\+wheels@{oi\+\_\+set\+\_\+wheels}}
+\index{oi\+\_\+set\+\_\+wheels@{oi\+\_\+set\+\_\+wheels}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+set\+\_\+wheels(int16\+\_\+t right\+\_\+wheel, int16\+\_\+t left\+\_\+wheel)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+set\+\_\+wheels (
+\begin{DoxyParamCaption}
+\item[{int16\+\_\+t}]{right\+\_\+wheel, }
+\item[{int16\+\_\+t}]{left\+\_\+wheel}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a2dfa9fddb3b143e74605cc2f1ba7544c}
+
+
+Drive wheels directly; speeds are in mm / sec. 
+
+Set direction and speed of the robot\textquotesingle{}s wheels. \hypertarget{open__interface_8c_a9129559bba5ff9dc7e4df64330864674}{}\index{open\+\_\+interface.\+c@{open\+\_\+interface.\+c}!oi\+\_\+update@{oi\+\_\+update}}
+\index{oi\+\_\+update@{oi\+\_\+update}!open\+\_\+interface.\+c@{open\+\_\+interface.\+c}}
+\subsubsection[{oi\+\_\+update(oi\+\_\+t $\ast$self)}]{\setlength{\rightskip}{0pt plus 5cm}void oi\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{self}
+\end{DoxyParamCaption}
+)}\label{open__interface_8c_a9129559bba5ff9dc7e4df64330864674}
+
+
+Update the Create. This will update all the sensor data and store it in the \hyperlink{structoi__t}{oi\+\_\+t} struct. 
+
+Update the Create. This will update all the sensor data. 

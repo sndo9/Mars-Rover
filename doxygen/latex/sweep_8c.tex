@@ -1,0 +1,508 @@
+\hypertarget{sweep_8c}{}\section{sweep.\+c File Reference}
+\label{sweep_8c}\index{sweep.\+c@{sweep.\+c}}
+
+
+Contains the functions for sweeping the infrared and sonar.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}open\+\_\+interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}movement.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}sweep.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structreading}{reading}
+\item 
+struct \hyperlink{structobj}{obj}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sweep_8c_aa7914b8d7fd0bae056b85acb5062676b}{}\#define {\bfseries T\+I\+M\+E\+R\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R}~8\label{sweep_8c_aa7914b8d7fd0bae056b85acb5062676b}
+
+\item 
+\hypertarget{sweep_8c_a548dc96417e4a056d5c31abeec9a8408}{}\#define {\bfseries C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+E\+D}~16000000\label{sweep_8c_a548dc96417e4a056d5c31abeec9a8408}
+
+\item 
+\hypertarget{sweep_8c_ae73d78f8ad1955fc7efc65b109987632}{}\#define {\bfseries S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D}~34000\label{sweep_8c_ae73d78f8ad1955fc7efc65b109987632}
+
+\item 
+\hypertarget{sweep_8c_a598a3330b3c21701223ee0ca14316eca}{}\#define {\bfseries P\+I}~3.\+14159265\label{sweep_8c_a598a3330b3c21701223ee0ca14316eca}
+
+\item 
+\hypertarget{sweep_8c_a58b94b7c17446a464d89d5ac4378284f}{}\#define {\bfseries read\+\_\+increment}~1\label{sweep_8c_a58b94b7c17446a464d89d5ac4378284f}
+
+\item 
+\hypertarget{sweep_8c_adf33cdf882a0fba20281f978068a6672}{}\#define {\bfseries reading\+\_\+rainbow\+\_\+length}~180/read\+\_\+increment + 1\label{sweep_8c_adf33cdf882a0fba20281f978068a6672}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sweep_8c_ae4b4955c1cc124b6d71416cc5dde197e}{}typedef struct \hyperlink{structreading}{reading} {\bfseries reading\+\_\+t}\label{sweep_8c_ae4b4955c1cc124b6d71416cc5dde197e}
+
+\item 
+\hypertarget{sweep_8c_af172590bf515ce719e2fdfbf90dd71df}{}typedef struct \hyperlink{structobj}{obj} {\bfseries obj\+\_\+t}\label{sweep_8c_af172590bf515ce719e2fdfbf90dd71df}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sweep_8c_a00c82f1b3d953f7d294833dd67a10f31}{serial\+\_\+puts} (char $\ast$data)
+\item 
+void \hyperlink{sweep_8c_a32befddd5759ec16ab7964d78e2252c5}{servo\+\_\+init} (void)
+\item 
+void \hyperlink{sweep_8c_a26aaef39b7cb15d48c64b9c002e25948}{rotate\+\_\+servo} (double degrees)
+\item 
+void \hyperlink{sweep_8c_a5413404d406aa98cb1b298ab62206f11}{pulse} (int count)
+\item 
+unsigned \hyperlink{sweep_8c_a53994b7b6c3ce3f4e632357e14a40520}{absol} (signed value)
+\item 
+void \hyperlink{sweep_8c_ad70f49ad8fe296283f2a1e799dc418d7}{init\+\_\+all} (void)
+\item 
+\hyperlink{sweep_8c_a5da59e05fa5ade4be7c7656aee78291a}{I\+S\+R} (T\+I\+M\+E\+R1\+\_\+\+C\+A\+P\+T\+\_\+vect)
+\item 
+void \hyperlink{sweep_8c_a76f61a68a43bc9b5185adab1fef2853a}{sonar\+\_\+start} (void)
+\item 
+void \hyperlink{sweep_8c_a651e74964036b795777d363bc27c5630}{read\+\_\+sonar} (void)
+\item 
+void \hyperlink{sweep_8c_a3f490719ec4995ac1a5f178c024fcc00}{ping} (void)
+\item 
+unsigned \hyperlink{sweep_8c_aaa35b22f218ecb9013bc06486bdebbed}{time2dist} (unsigned time)
+\item 
+void \hyperlink{sweep_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a}{A\+D\+C\+\_\+init} (void)
+\item 
+unsigned \hyperlink{sweep_8c_a15b8d919fc07cade057b56748ecd619f}{A\+D\+C\+\_\+read} (char channel)
+\item 
+void \hyperlink{sweep_8c_a6c988a302ebc893092580ea165a3d107}{infrared\+\_\+start} (void)
+\item 
+void \hyperlink{sweep_8c_aa1652761ba1e6b581bbba0478e0ddbfa}{read\+\_\+the\+\_\+rainbow} (void)
+\item 
+void \hyperlink{sweep_8c_a207f76d4e8a38f218c9814edc75a4a5d}{print\+\_\+the\+\_\+rainbow} (void)
+\item 
+void \hyperlink{sweep_8c_a3e192986cd9cd207393ce921a0fa4332}{obj\+\_\+detect} (void)
+\item 
+void \hyperlink{sweep_8c_a24b243af23fd6c3ce851d3356e480fa5}{print\+\_\+objects} (void)
+\item 
+void \hyperlink{sweep_8c_a76d6b63126bf679a4502dad8e18661b8}{sweep} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{sweep_8c_ae1e1dde676c120fa6d10f3bb2c14059e}{}int {\bfseries max} = 4450\label{sweep_8c_ae1e1dde676c120fa6d10f3bb2c14059e}
+
+\item 
+\hypertarget{sweep_8c_a3e202b201e6255d975cd6d3aff1f5a4d}{}int {\bfseries min} = 1100\label{sweep_8c_a3e202b201e6255d975cd6d3aff1f5a4d}
+
+\item 
+\hypertarget{sweep_8c_a3d4f497af9a194d9e03e5d9a9b0ee67d}{}volatile int {\bfseries counter} = 800\label{sweep_8c_a3d4f497af9a194d9e03e5d9a9b0ee67d}
+
+\item 
+\hypertarget{sweep_8c_acdf6d6a27178cff29b0c866ce0dcbf0d}{}volatile double {\bfseries degrees} = 0\label{sweep_8c_acdf6d6a27178cff29b0c866ce0dcbf0d}
+
+\item 
+\hypertarget{sweep_8c_a0cc2535383577ff779a697aad49eaef6}{}volatile int {\bfseries incdec} = 1\label{sweep_8c_a0cc2535383577ff779a697aad49eaef6}
+
+\item 
+\hypertarget{sweep_8c_a541d1d58b4dace70c3077a5837886789}{}\hyperlink{structobj}{obj\+\_\+t} {\bfseries obj\+\_\+rainbow} \mbox{[}12\mbox{]}\label{sweep_8c_a541d1d58b4dace70c3077a5837886789}
+
+\item 
+\hypertarget{sweep_8c_a8dc1feaaa3243f12c17d62c8073de4b9}{}int {\bfseries obj\+\_\+gap} = 100\label{sweep_8c_a8dc1feaaa3243f12c17d62c8073de4b9}
+
+\item 
+\hypertarget{sweep_8c_abacae5bd36472d3c96229c40f6a142bb}{}int {\bfseries dist\+\_\+sum} = 0\label{sweep_8c_abacae5bd36472d3c96229c40f6a142bb}
+
+\item 
+\hypertarget{sweep_8c_af54bf65a3b1679f732ef53816aa0d523}{}int {\bfseries obj\+\_\+count} = 0\label{sweep_8c_af54bf65a3b1679f732ef53816aa0d523}
+
+\item 
+\hypertarget{sweep_8c_a3a195c994d561ce3c9adb318444bcaf3}{}volatile \hyperlink{structreading}{reading\+\_\+t} {\bfseries reading\+\_\+rainbow} \mbox{[}reading\+\_\+rainbow\+\_\+length\mbox{]}\label{sweep_8c_a3a195c994d561ce3c9adb318444bcaf3}
+
+\item 
+\hypertarget{sweep_8c_a16cb8bc48d0295e4cdb47135e5107e98}{}volatile unsigned {\bfseries last\+\_\+time} = 0\label{sweep_8c_a16cb8bc48d0295e4cdb47135e5107e98}
+
+\item 
+\hypertarget{sweep_8c_ad9bc96f60a5cf8803b7526340ca97fa3}{}volatile unsigned {\bfseries current\+\_\+time} = 0\label{sweep_8c_ad9bc96f60a5cf8803b7526340ca97fa3}
+
+\item 
+\hypertarget{sweep_8c_af6aeea05b8ac784ce2a37276078e353f}{}volatile unsigned long {\bfseries time\+\_\+diff}\label{sweep_8c_af6aeea05b8ac784ce2a37276078e353f}
+
+\item 
+\hypertarget{sweep_8c_a11d6fb3c359aea738941075e61c31efe}{}volatile int {\bfseries update\+\_\+flag} = 0\label{sweep_8c_a11d6fb3c359aea738941075e61c31efe}
+
+\item 
+\hypertarget{sweep_8c_a3581d3652022f9cd9f439f43387e19a1}{}volatile int {\bfseries num\+\_\+overflows} = 0\label{sweep_8c_a3581d3652022f9cd9f439f43387e19a1}
+
+\item 
+\hypertarget{sweep_8c_a7bf5bf3541b76f0bb7cea5d055ce7878}{}long {\bfseries sonar\+\_\+distance} = 0\label{sweep_8c_a7bf5bf3541b76f0bb7cea5d055ce7878}
+
+\item 
+\hypertarget{sweep_8c_a0e3e53d242887e1a3a7ef01175ac9703}{}unsigned int {\bfseries read}\label{sweep_8c_a0e3e53d242887e1a3a7ef01175ac9703}
+
+\item 
+\hypertarget{sweep_8c_ab71cf4e80116c2a55f28f06c70389cf6}{}unsigned long {\bfseries inf\+\_\+distance}\label{sweep_8c_ab71cf4e80116c2a55f28f06c70389cf6}
+
+\item 
+\hypertarget{sweep_8c_a2567b42cf8eca71047cda0a454a39f1f}{}long {\bfseries inf\+\_\+filtered} = 0\label{sweep_8c_a2567b42cf8eca71047cda0a454a39f1f}
+
+\item 
+\hypertarget{sweep_8c_ad570fa580e3013676403ae128cbbfa81}{}long {\bfseries old} = 0\label{sweep_8c_ad570fa580e3013676403ae128cbbfa81}
+
+\item 
+\hypertarget{sweep_8c_a0f5349edb417a78dc9e4b7b1a46171ec}{}long {\bfseries read\+\_\+old} = 0\label{sweep_8c_a0f5349edb417a78dc9e4b7b1a46171ec}
+
+\item 
+\hypertarget{sweep_8c_a4ba2dcd71d9582408235882854afe858}{}long {\bfseries read\+\_\+filter} = 0\label{sweep_8c_a4ba2dcd71d9582408235882854afe858}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains the functions for sweeping the infrared and sonar. 
+
+\begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/5/2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{sweep_8c_a53994b7b6c3ce3f4e632357e14a40520}{}\index{sweep.\+c@{sweep.\+c}!absol@{absol}}
+\index{absol@{absol}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{absol(signed value)}]{\setlength{\rightskip}{0pt plus 5cm}unsigned absol (
+\begin{DoxyParamCaption}
+\item[{signed}]{value}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a53994b7b6c3ce3f4e632357e14a40520}
+This method returns the absolute value of a signed int \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The signed int to take absolute value of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+absolute value of the parameter, value 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a}{}\index{sweep.\+c@{sweep.\+c}!A\+D\+C\+\_\+init@{A\+D\+C\+\_\+init}}
+\index{A\+D\+C\+\_\+init@{A\+D\+C\+\_\+init}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{A\+D\+C\+\_\+init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void A\+D\+C\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a4b4a2ddcb45df0c8497c47d4ed800e2a}
+This method initializes the A\+D\+C \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+R\+E\+F\+S=11, A\+D\+L\+A\+R=0, M\+U\+X don’t care
+
+A\+D\+E\+N=1, A\+D\+F\+R=0, A\+D\+I\+E=0, A\+D\+S\+P=111 \hypertarget{sweep_8c_a15b8d919fc07cade057b56748ecd619f}{}\index{sweep.\+c@{sweep.\+c}!A\+D\+C\+\_\+read@{A\+D\+C\+\_\+read}}
+\index{A\+D\+C\+\_\+read@{A\+D\+C\+\_\+read}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{A\+D\+C\+\_\+read(char channel)}]{\setlength{\rightskip}{0pt plus 5cm}unsigned A\+D\+C\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{char}]{channel}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a15b8d919fc07cade057b56748ecd619f}
+This method reads the A\+D\+C from the given channel \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & Channel to read input from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Set channel to read from
+
+Start single conversion \hypertarget{sweep_8c_a6c988a302ebc893092580ea165a3d107}{}\index{sweep.\+c@{sweep.\+c}!infrared\+\_\+start@{infrared\+\_\+start}}
+\index{infrared\+\_\+start@{infrared\+\_\+start}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{infrared\+\_\+start(void)}]{\setlength{\rightskip}{0pt plus 5cm}void infrared\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a6c988a302ebc893092580ea165a3d107}
+This method starts receiving data from infrared sensor \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Equation from excel plot of voltage readings
+
+Actual distance
+
+Filter raw digital read to make calibration easier \hypertarget{sweep_8c_ad70f49ad8fe296283f2a1e799dc418d7}{}\index{sweep.\+c@{sweep.\+c}!init\+\_\+all@{init\+\_\+all}}
+\index{init\+\_\+all@{init\+\_\+all}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{init\+\_\+all(void)}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+all (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_ad70f49ad8fe296283f2a1e799dc418d7}
+This method initializes all components \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a5da59e05fa5ade4be7c7656aee78291a}{}\index{sweep.\+c@{sweep.\+c}!I\+S\+R@{I\+S\+R}}
+\index{I\+S\+R@{I\+S\+R}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{I\+S\+R(\+T\+I\+M\+E\+R1\+\_\+\+C\+A\+P\+T\+\_\+vect)}]{\setlength{\rightskip}{0pt plus 5cm}I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{T\+I\+M\+E\+R1\+\_\+\+C\+A\+P\+T\+\_\+vect}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a5da59e05fa5ade4be7c7656aee78291a}
+This method reads the sonar interrupt \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T\+I\+M\+E\+R1\+\_\+\+C\+A\+P\+T\+\_\+vect} & This interrupt rises when Timer1 captures input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Update time variables
+
+Toggle clock edge read \hypertarget{sweep_8c_a3e192986cd9cd207393ce921a0fa4332}{}\index{sweep.\+c@{sweep.\+c}!obj\+\_\+detect@{obj\+\_\+detect}}
+\index{obj\+\_\+detect@{obj\+\_\+detect}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{obj\+\_\+detect(void)}]{\setlength{\rightskip}{0pt plus 5cm}void obj\+\_\+detect (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a3e192986cd9cd207393ce921a0fa4332}
+This method detects the objects using infrared \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Memory allocation for previous read
+
+Memory allocation for current read
+
+Memory allocation for current object being edited
+
+Boolean variable to check that reading obj currently or not
+
+If infrared jumps to within range, on object
+
+Set the object start degrees
+
+Infrared jumps out of range or end of servo range, off object
+
+Set the object end degrees
+
+Set the distance of the object
+
+Calculate the width of the object
+
+Add object to object array \hypertarget{sweep_8c_a3f490719ec4995ac1a5f178c024fcc00}{}\index{sweep.\+c@{sweep.\+c}!ping@{ping}}
+\index{ping@{ping}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{ping(void)}]{\setlength{\rightskip}{0pt plus 5cm}void ping (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a3f490719ec4995ac1a5f178c024fcc00}
+This method pings the P\+I\+N\+G))) sensor \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a24b243af23fd6c3ce851d3356e480fa5}{}\index{sweep.\+c@{sweep.\+c}!print\+\_\+objects@{print\+\_\+objects}}
+\index{print\+\_\+objects@{print\+\_\+objects}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{print\+\_\+objects(void)}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+objects (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a24b243af23fd6c3ce851d3356e480fa5}
+This method prints the objects found \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a207f76d4e8a38f218c9814edc75a4a5d}{}\index{sweep.\+c@{sweep.\+c}!print\+\_\+the\+\_\+rainbow@{print\+\_\+the\+\_\+rainbow}}
+\index{print\+\_\+the\+\_\+rainbow@{print\+\_\+the\+\_\+rainbow}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{print\+\_\+the\+\_\+rainbow(void)}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+the\+\_\+rainbow (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a207f76d4e8a38f218c9814edc75a4a5d}
+This method prints the sonar wave \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a5413404d406aa98cb1b298ab62206f11}{}\index{sweep.\+c@{sweep.\+c}!pulse@{pulse}}
+\index{pulse@{pulse}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{pulse(int count)}]{\setlength{\rightskip}{0pt plus 5cm}void pulse (
+\begin{DoxyParamCaption}
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a5413404d406aa98cb1b298ab62206f11}
+This method sends a pulse to the Servo \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Width of pulse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a651e74964036b795777d363bc27c5630}{}\index{sweep.\+c@{sweep.\+c}!read\+\_\+sonar@{read\+\_\+sonar}}
+\index{read\+\_\+sonar@{read\+\_\+sonar}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{read\+\_\+sonar(void)}]{\setlength{\rightskip}{0pt plus 5cm}void read\+\_\+sonar (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a651e74964036b795777d363bc27c5630}
+This method initializes the sonar for reading \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Disable interrupt
+
+Clear I\+C\+F1
+
+Enable interrupt
+
+Set pre-\/scaler to 1024(101). To set to 256, change last 3 bits to (100), 8(010)
+
+Set clock edge read to rising edge \hypertarget{sweep_8c_aa1652761ba1e6b581bbba0478e0ddbfa}{}\index{sweep.\+c@{sweep.\+c}!read\+\_\+the\+\_\+rainbow@{read\+\_\+the\+\_\+rainbow}}
+\index{read\+\_\+the\+\_\+rainbow@{read\+\_\+the\+\_\+rainbow}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{read\+\_\+the\+\_\+rainbow(void)}]{\setlength{\rightskip}{0pt plus 5cm}void read\+\_\+the\+\_\+rainbow (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_aa1652761ba1e6b581bbba0478e0ddbfa}
+This method reads sonar wave \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a26aaef39b7cb15d48c64b9c002e25948}{}\index{sweep.\+c@{sweep.\+c}!rotate\+\_\+servo@{rotate\+\_\+servo}}
+\index{rotate\+\_\+servo@{rotate\+\_\+servo}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{rotate\+\_\+servo(double degrees)}]{\setlength{\rightskip}{0pt plus 5cm}void rotate\+\_\+servo (
+\begin{DoxyParamCaption}
+\item[{double}]{degrees}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a26aaef39b7cb15d48c64b9c002e25948}
+This method rotates the Servo \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em degrees} & Amount to rotate the servo. Positive for clockwise and negative for counter-\/clockwise \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Convert degrees to count, then rotate that many degrees \hypertarget{sweep_8c_a00c82f1b3d953f7d294833dd67a10f31}{}\index{sweep.\+c@{sweep.\+c}!serial\+\_\+puts@{serial\+\_\+puts}}
+\index{serial\+\_\+puts@{serial\+\_\+puts}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{serial\+\_\+puts(char $\ast$data)}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+puts (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a00c82f1b3d953f7d294833dd67a10f31}
+This method transmits a string via serial communication \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Char array to transmit with the U\+S\+A\+R\+T \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_a32befddd5759ec16ab7964d78e2252c5}{}\index{sweep.\+c@{sweep.\+c}!servo\+\_\+init@{servo\+\_\+init}}
+\index{servo\+\_\+init@{servo\+\_\+init}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{servo\+\_\+init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void servo\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a32befddd5759ec16ab7964d78e2252c5}
+This method initializes the servo. \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+O\+C3\+A is pin 4
+
+Set T\+O\+P for 46.\+51 hz
+
+Set Servo to Fast P\+W\+M mode \hypertarget{sweep_8c_a76f61a68a43bc9b5185adab1fef2853a}{}\index{sweep.\+c@{sweep.\+c}!sonar\+\_\+start@{sonar\+\_\+start}}
+\index{sonar\+\_\+start@{sonar\+\_\+start}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{sonar\+\_\+start(void)}]{\setlength{\rightskip}{0pt plus 5cm}void sonar\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a76f61a68a43bc9b5185adab1fef2853a}
+This method initializes the sonar and reads the sonar data \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Account for overflow \hypertarget{sweep_8c_a76d6b63126bf679a4502dad8e18661b8}{}\index{sweep.\+c@{sweep.\+c}!sweep@{sweep}}
+\index{sweep@{sweep}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{sweep(void)}]{\setlength{\rightskip}{0pt plus 5cm}void sweep (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_a76d6b63126bf679a4502dad8e18661b8}
+This is an test method emulating the main method in \hyperlink{main_8c}{main.\+c} This method tests object detection \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{sweep_8c_aaa35b22f218ecb9013bc06486bdebbed}{}\index{sweep.\+c@{sweep.\+c}!time2dist@{time2dist}}
+\index{time2dist@{time2dist}!sweep.\+c@{sweep.\+c}}
+\subsubsection[{time2dist(unsigned time)}]{\setlength{\rightskip}{0pt plus 5cm}unsigned time2dist (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{time}
+\end{DoxyParamCaption}
+)}\label{sweep_8c_aaa35b22f218ecb9013bc06486bdebbed}
+This method calculates the distance based on the time \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em time} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}

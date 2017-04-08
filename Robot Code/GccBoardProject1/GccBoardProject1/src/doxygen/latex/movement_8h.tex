@@ -1,0 +1,134 @@
+\hypertarget{movement_8h}{}\section{movement.\+h File Reference}
+\label{movement_8h}\index{movement.\+h@{movement.\+h}}
+
+
+this header file will contain all required definitions and basic movement functions.  
+
+
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}open\+\_\+interface.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$avr/io.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{movement_8h_addb40a1c4314a155c6e68a57352c159b}{move} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$sensor, int notcentimeters)
+\item 
+int \hyperlink{movement_8h_a31ae97cda0275718d4d297ddd561de69}{care\+Move} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$sensor, int distance, int speed)
+\item 
+void \hyperlink{movement_8h_abc7b2d03157780fca88d404fb8069f45}{turn} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$sensor, int degrees, int speed)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+this header file will contain all required definitions and basic movement functions. 
+
+\begin{DoxyAuthor}{Author}
+
+
+Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/5/2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{movement_8h_a31ae97cda0275718d4d297ddd561de69}{}\index{movement.\+h@{movement.\+h}!care\+Move@{care\+Move}}
+\index{care\+Move@{care\+Move}!movement.\+h@{movement.\+h}}
+\subsubsection[{care\+Move(oi\+\_\+t $\ast$sensor, int distance, int speed)}]{\setlength{\rightskip}{0pt plus 5cm}int care\+Move (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{sensor, }
+\item[{int}]{distance, }
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)}\label{movement_8h_a31ae97cda0275718d4d297ddd561de69}
+This method moves the robot so many centimeters \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Instance of the robot \\
+\hline
+{\em distance} & Distance to move in centimeters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016
+\end{DoxyDate}
+This method moves the robot so many centimeters \begin{DoxyAuthor}{Author}
+Nicus Hicks 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Instance of the robot \\
+\hline
+{\em distance} & Distance to move in centimeters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+The distance still needed to travel \hypertarget{movement_8h_addb40a1c4314a155c6e68a57352c159b}{}\index{movement.\+h@{movement.\+h}!move@{move}}
+\index{move@{move}!movement.\+h@{movement.\+h}}
+\subsubsection[{move(oi\+\_\+t $\ast$sensor, int notcentimeters)}]{\setlength{\rightskip}{0pt plus 5cm}void move (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{sensor, }
+\item[{int}]{notcentimeters}
+\end{DoxyParamCaption}
+)}\label{movement_8h_addb40a1c4314a155c6e68a57352c159b}
+This method moves the robot so many meters \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Instance of the robot \\
+\hline
+{\em notcentimeters} & Distance to move in meters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Move forward; full speed
+
+Stop \hypertarget{movement_8h_abc7b2d03157780fca88d404fb8069f45}{}\index{movement.\+h@{movement.\+h}!turn@{turn}}
+\index{turn@{turn}!movement.\+h@{movement.\+h}}
+\subsubsection[{turn(oi\+\_\+t $\ast$sensor, int degrees, int speed)}]{\setlength{\rightskip}{0pt plus 5cm}void turn (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{sensor, }
+\item[{int}]{degrees, }
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)}\label{movement_8h_abc7b2d03157780fca88d404fb8069f45}
+This method turns the robot \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Instance of the robot \\
+\hline
+{\em degrees} & Degrees to turn. Positive for clockwise. Negative for counterclockwise \\
+\hline
+{\em speed} & Speed to turn to robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016
+\end{DoxyDate}
+This method turns the robot \begin{DoxyAuthor}{Author}
+Zach Newton and Nathan Francque 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Instance of the robot \\
+\hline
+{\em degrees} & Degrees to turn. Positive for clockwise. Negative for counterclockwise \\
+\hline
+{\em speed} & Speed to turn to robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+broken 

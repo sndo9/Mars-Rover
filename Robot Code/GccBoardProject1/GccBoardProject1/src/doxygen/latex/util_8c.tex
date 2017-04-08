@@ -1,0 +1,405 @@
+\hypertarget{util_8c}{}\section{util.\+c File Reference}
+\label{util_8c}\index{util.\+c@{util.\+c}}
+
+
+This file holds all utility functions for using the Timer, Shaft Encoder, Robot Push Buttons, Stepper Motor, U\+S\+A\+R\+T Serial Communication, and User Interface movement.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\\*
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}open\+\_\+interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sweep.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}movement.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{util_8c_aa7914b8d7fd0bae056b85acb5062676b}{}\#define {\bfseries T\+I\+M\+E\+R\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R}~8\label{util_8c_aa7914b8d7fd0bae056b85acb5062676b}
+
+\item 
+\hypertarget{util_8c_a548dc96417e4a056d5c31abeec9a8408}{}\#define {\bfseries C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+E\+D}~16000000\label{util_8c_a548dc96417e4a056d5c31abeec9a8408}
+
+\item 
+\hypertarget{util_8c_ae73d78f8ad1955fc7efc65b109987632}{}\#define {\bfseries S\+O\+U\+N\+D\+\_\+\+S\+P\+E\+E\+D}~34000\label{util_8c_ae73d78f8ad1955fc7efc65b109987632}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{util_8c_aa1d8b4ca2abff18a392fb1a60405badb}{timer2\+\_\+start} (char unit)
+\item 
+void \hyperlink{util_8c_ab122ebc85e705085e419862bddb14855}{timer2\+\_\+stop} (void)
+\item 
+void \hyperlink{util_8c_a81f8b753fa3af751d39ae3ffdddb5bbd}{wait\+\_\+ms} (unsigned int time\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Blocks for a specified number of milliseconds. \end{DoxyCompactList}\item 
+\hyperlink{util_8c_ab70da2aaa3ee7e1b1a9c37f48d85d660}{I\+S\+R} (T\+I\+M\+E\+R2\+\_\+\+C\+O\+M\+P\+\_\+vect)
+\item 
+void \hyperlink{util_8c_aae8b6fe63d14bdb55a6c985eb14f74fb}{init\+\_\+push\+\_\+buttons} (void)
+\begin{DoxyCompactList}\small\item\em Initialize P\+O\+R\+T\+C, which is used by the push buttons. \end{DoxyCompactList}\item 
+char \hyperlink{util_8c_af09f72417b87d53446884d1610e2a693}{read\+\_\+push\+\_\+buttons} (void)
+\begin{DoxyCompactList}\small\item\em Return the position of button being pushed. \end{DoxyCompactList}\item 
+void \hyperlink{util_8c_a0f93cf294588bd654e61dc362c7517a9}{shaft\+\_\+encoder\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Shaft encoder initialization. \end{DoxyCompactList}\item 
+char \hyperlink{util_8c_a878d34348d21e7b97cee6383488861c2}{read\+\_\+shaft\+\_\+encoder} (void)
+\begin{DoxyCompactList}\small\item\em Read the shaft encoder. \end{DoxyCompactList}\item 
+void \hyperlink{util_8c_a4808efef61f73d6624f055ede091a83d}{stepper\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize Stepper Motor. \end{DoxyCompactList}\item 
+void \hyperlink{util_8c_a9ce12f4e9ee54399eed7c0adde445114}{move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step} (int num\+\_\+steps, int direction)
+\begin{DoxyCompactList}\small\item\em Turn the Stepper Motor. \end{DoxyCompactList}\item 
+void \hyperlink{util_8c_a96cf48e3840fadaed215664378455e90}{transmit\+\_\+data} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$sensor, int speed)
+\item 
+void \hyperlink{util_8c_ad2b461e9e9044364a28a61cfadcacdd8}{serial\+\_\+init} (void)
+\item 
+char \hyperlink{util_8c_a39cac08164ba66cb0d3cc151ad25d69e}{serial\+\_\+getc} (void)
+\item 
+void \hyperlink{util_8c_a44076f15bcb5e445dd62f187b8f5b446}{serial\+\_\+putc} (char data)
+\item 
+void \hyperlink{util_8c_a00c82f1b3d953f7d294833dd67a10f31}{serial\+\_\+puts} (char $\ast$data)
+\item 
+void \hyperlink{util_8c_a53c11552abb4a9ffd3f52fab310437d7}{movement} (\hyperlink{structoi__t}{oi\+\_\+t} $\ast$sensor)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{util_8c_aa8769c4c2aeb2f81870e03d197faf4cb}{}volatile unsigned int \hyperlink{util_8c_aa8769c4c2aeb2f81870e03d197faf4cb}{timer2\+\_\+tick}\label{util_8c_aa8769c4c2aeb2f81870e03d197faf4cb}
+
+\begin{DoxyCompactList}\small\item\em Global used for interrupt driven delay functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file holds all utility functions for using the Timer, Shaft Encoder, Robot Push Buttons, Stepper Motor, U\+S\+A\+R\+T Serial Communication, and User Interface movement. 
+
+\hyperlink{util_8c}{util.\+c}\+: utility functions for the Atmel platform For an overview of how timer based interrupts work, see page 111 and 133-\/137 of the Atmel Mega128 User Guide
+
+\begin{DoxyAuthor}{Author}
+Zhao Zhang, Chad Nelson and Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+06/26/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{util_8c_aae8b6fe63d14bdb55a6c985eb14f74fb}{}\index{util.\+c@{util.\+c}!init\+\_\+push\+\_\+buttons@{init\+\_\+push\+\_\+buttons}}
+\index{init\+\_\+push\+\_\+buttons@{init\+\_\+push\+\_\+buttons}!util.\+c@{util.\+c}}
+\subsubsection[{init\+\_\+push\+\_\+buttons(void)}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+push\+\_\+buttons (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_aae8b6fe63d14bdb55a6c985eb14f74fb}
+
+
+Initialize P\+O\+R\+T\+C, which is used by the push buttons. 
+
+This method initializes P\+O\+R\+T\+C to accept push buttons as input \begin{DoxyAuthor}{Author}
+Nicus Hicks 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Setting P\+C0-\/\+P\+C5 to input
+
+Setting pins\textquotesingle{} pull up resistors \hypertarget{util_8c_ab70da2aaa3ee7e1b1a9c37f48d85d660}{}\index{util.\+c@{util.\+c}!I\+S\+R@{I\+S\+R}}
+\index{I\+S\+R@{I\+S\+R}!util.\+c@{util.\+c}}
+\subsubsection[{I\+S\+R(\+T\+I\+M\+E\+R2\+\_\+\+C\+O\+M\+P\+\_\+vect)}]{\setlength{\rightskip}{0pt plus 5cm}I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{T\+I\+M\+E\+R2\+\_\+\+C\+O\+M\+P\+\_\+vect}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_ab70da2aaa3ee7e1b1a9c37f48d85d660}
+This method is an interrupt handler \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em T\+I\+M\+E\+R2\+\_\+\+C\+O\+M\+P\+\_\+vect} & This interrupt rises every 1 ms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{util_8c_a9ce12f4e9ee54399eed7c0adde445114}{}\index{util.\+c@{util.\+c}!move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step@{move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step}}
+\index{move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step@{move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step}!util.\+c@{util.\+c}}
+\subsubsection[{move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step(int num\+\_\+steps, int direction)}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+stepper\+\_\+motor\+\_\+by\+\_\+step (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+steps, }
+\item[{int}]{direction}
+\end{DoxyParamCaption}
+)}\label{util_8c_a9ce12f4e9ee54399eed7c0adde445114}
+
+
+Turn the Stepper Motor. 
+
+Stepper motor move function.
+
+Turn the stepper motor a given number of steps.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+steps} & A value between 1 and 200 steps (1.\+8 to 360 degrees) \\
+\hline
+{\em direction} & Indication of direction\+: 1 for C\+W and -\/1 for C\+C\+W \\
+\hline
+\end{DoxyParams}
+\hypertarget{util_8c_a53c11552abb4a9ffd3f52fab310437d7}{}\index{util.\+c@{util.\+c}!movement@{movement}}
+\index{movement@{movement}!util.\+c@{util.\+c}}
+\subsubsection[{movement(oi\+\_\+t $\ast$sensor)}]{\setlength{\rightskip}{0pt plus 5cm}void movement (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{sensor}
+\end{DoxyParamCaption}
+)}\label{util_8c_a53c11552abb4a9ffd3f52fab310437d7}
+This method moves the Robot using the User Interface provided with the application \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Instance of \hyperlink{structoi__t}{oi\+\_\+t}, used to move the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Output variable for printing the speed
+
+Current value coming in from serial communication
+
+Number of loops it has received the same input
+
+String for outputing data
+
+Manual checks the register instead of using \hyperlink{util_8c_a39cac08164ba66cb0d3cc151ad25d69e}{serial\+\_\+getc()}
+
+Pull data out of the register
+
+Checking what was transmitted and moving the Robot accordingly
+
+Checking for cliff impact If the robot runs into a cliff, it reverse for 5 seconds
+
+Checking for the line boundary If a boundary is found, it reverses \hypertarget{util_8c_af09f72417b87d53446884d1610e2a693}{}\index{util.\+c@{util.\+c}!read\+\_\+push\+\_\+buttons@{read\+\_\+push\+\_\+buttons}}
+\index{read\+\_\+push\+\_\+buttons@{read\+\_\+push\+\_\+buttons}!util.\+c@{util.\+c}}
+\subsubsection[{read\+\_\+push\+\_\+buttons(void)}]{\setlength{\rightskip}{0pt plus 5cm}char read\+\_\+push\+\_\+buttons (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_af09f72417b87d53446884d1610e2a693}
+
+
+Return the position of button being pushed. 
+
+Return the position of button being pushed. \begin{DoxyReturn}{Returns}
+the position of the button being pushed. A 1 is the rightmost button. 0 indicates no button being pressed 
+\end{DoxyReturn}
+\hypertarget{util_8c_a878d34348d21e7b97cee6383488861c2}{}\index{util.\+c@{util.\+c}!read\+\_\+shaft\+\_\+encoder@{read\+\_\+shaft\+\_\+encoder}}
+\index{read\+\_\+shaft\+\_\+encoder@{read\+\_\+shaft\+\_\+encoder}!util.\+c@{util.\+c}}
+\subsubsection[{read\+\_\+shaft\+\_\+encoder(void)}]{\setlength{\rightskip}{0pt plus 5cm}char read\+\_\+shaft\+\_\+encoder (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_a878d34348d21e7b97cee6383488861c2}
+
+
+Read the shaft encoder. 
+
+Shaft encoder read function.
+
+Reads the two switches of the shaft encoder and compares the values to the previous read. This function should be called very frequently for the best results.
+
+\begin{DoxyReturn}{Returns}
+a value indicating the shaft encoder has moved\+: 0 = no rotation (switches did not change) 1 = C\+W rotation -\/1 = C\+C\+W rotation 
+\end{DoxyReturn}
+\hypertarget{util_8c_a39cac08164ba66cb0d3cc151ad25d69e}{}\index{util.\+c@{util.\+c}!serial\+\_\+getc@{serial\+\_\+getc}}
+\index{serial\+\_\+getc@{serial\+\_\+getc}!util.\+c@{util.\+c}}
+\subsubsection[{serial\+\_\+getc(void)}]{\setlength{\rightskip}{0pt plus 5cm}char serial\+\_\+getc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_a39cac08164ba66cb0d3cc151ad25d69e}
+This method gets a character via serial communication \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Char received from the U\+S\+A\+R\+T 
+\end{DoxyReturn}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Wait for the receive complete flag(\+R\+X\+C) \hypertarget{util_8c_ad2b461e9e9044364a28a61cfadcacdd8}{}\index{util.\+c@{util.\+c}!serial\+\_\+init@{serial\+\_\+init}}
+\index{serial\+\_\+init@{serial\+\_\+init}!util.\+c@{util.\+c}}
+\subsubsection[{serial\+\_\+init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_ad2b461e9e9044364a28a61cfadcacdd8}
+This method initializes serial communication with the Robot \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Set the baud rate
+
+Initializes the U\+S\+A\+R\+T\textquotesingle{}s \hypertarget{util_8c_a44076f15bcb5e445dd62f187b8f5b446}{}\index{util.\+c@{util.\+c}!serial\+\_\+putc@{serial\+\_\+putc}}
+\index{serial\+\_\+putc@{serial\+\_\+putc}!util.\+c@{util.\+c}}
+\subsubsection[{serial\+\_\+putc(char data)}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+putc (
+\begin{DoxyParamCaption}
+\item[{char}]{data}
+\end{DoxyParamCaption}
+)}\label{util_8c_a44076f15bcb5e445dd62f187b8f5b446}
+This method transmits a character via serial communication \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Char to transmit with the U\+S\+A\+R\+T \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{util_8c_a00c82f1b3d953f7d294833dd67a10f31}{}\index{util.\+c@{util.\+c}!serial\+\_\+puts@{serial\+\_\+puts}}
+\index{serial\+\_\+puts@{serial\+\_\+puts}!util.\+c@{util.\+c}}
+\subsubsection[{serial\+\_\+puts(char $\ast$data)}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+puts (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{util_8c_a00c82f1b3d953f7d294833dd67a10f31}
+This method transmits a string via serial communication \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Char array to transmit with the U\+S\+A\+R\+T \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{util_8c_a0f93cf294588bd654e61dc362c7517a9}{}\index{util.\+c@{util.\+c}!shaft\+\_\+encoder\+\_\+init@{shaft\+\_\+encoder\+\_\+init}}
+\index{shaft\+\_\+encoder\+\_\+init@{shaft\+\_\+encoder\+\_\+init}!util.\+c@{util.\+c}}
+\subsubsection[{shaft\+\_\+encoder\+\_\+init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void shaft\+\_\+encoder\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_a0f93cf294588bd654e61dc362c7517a9}
+
+
+Shaft encoder initialization. 
+
+This method initializes P\+O\+R\+T\+C for input from the shaft encoder \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Setting P\+C6-\/\+P\+C7 to input
+
+Setting pins\textquotesingle{} pull-\/up resistors \hypertarget{util_8c_a4808efef61f73d6624f055ede091a83d}{}\index{util.\+c@{util.\+c}!stepper\+\_\+init@{stepper\+\_\+init}}
+\index{stepper\+\_\+init@{stepper\+\_\+init}!util.\+c@{util.\+c}}
+\subsubsection[{stepper\+\_\+init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void stepper\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_a4808efef61f73d6624f055ede091a83d}
+
+
+Initialize Stepper Motor. 
+
+This method initializes P\+O\+R\+T\+E to control the stepper motor \begin{DoxyAuthor}{Author}
+Nicus Hicks 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Setting P\+E4-\/\+P\+E7 to output
+
+Initial position (0b1000) P\+E4-\/\+P\+E7
+
+Clear P\+E4-\/\+P\+E7 \hypertarget{util_8c_aa1d8b4ca2abff18a392fb1a60405badb}{}\index{util.\+c@{util.\+c}!timer2\+\_\+start@{timer2\+\_\+start}}
+\index{timer2\+\_\+start@{timer2\+\_\+start}!util.\+c@{util.\+c}}
+\subsubsection[{timer2\+\_\+start(char unit)}]{\setlength{\rightskip}{0pt plus 5cm}void timer2\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{char}]{unit}
+\end{DoxyParamCaption}
+)}\label{util_8c_aa1d8b4ca2abff18a392fb1a60405badb}
+This method starts Timer 2 \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & Speed for Timer 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Unit = 0 is for slow
+
+W\+G\+M\+:C\+T\+C, C\+O\+M\+:O\+C2 disconnected, pre-\/scaler = 64
+
+Enabling O.\+C. Interrupt for Timer2
+
+Unit = 1 is for fast
+
+W\+G\+M\+:C\+T\+C, C\+O\+M\+:O\+C2 disconnected, pre-\/scaler = 1
+
+Enabling O.\+C. Interrupt for Timer2 \hypertarget{util_8c_ab122ebc85e705085e419862bddb14855}{}\index{util.\+c@{util.\+c}!timer2\+\_\+stop@{timer2\+\_\+stop}}
+\index{timer2\+\_\+stop@{timer2\+\_\+stop}!util.\+c@{util.\+c}}
+\subsubsection[{timer2\+\_\+stop(void)}]{\setlength{\rightskip}{0pt plus 5cm}void timer2\+\_\+stop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_ab122ebc85e705085e419862bddb14855}
+This method stops Timer 2 \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Disabling O.\+C. Interrupt for Timer2
+
+Clearing O.\+C. settings \hypertarget{util_8c_a96cf48e3840fadaed215664378455e90}{}\index{util.\+c@{util.\+c}!transmit\+\_\+data@{transmit\+\_\+data}}
+\index{transmit\+\_\+data@{transmit\+\_\+data}!util.\+c@{util.\+c}}
+\subsubsection[{transmit\+\_\+data(oi\+\_\+t $\ast$sensor, int speed)}]{\setlength{\rightskip}{0pt plus 5cm}void transmit\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{{\bf oi\+\_\+t} $\ast$}]{sensor, }
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)}\label{util_8c_a96cf48e3840fadaed215664378455e90}
+This method transmits data through serial communication with the Robot \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em sensor} & Oi sensor to transmit data \\
+\hline
+{\em speed} & Speed at which to transmite the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+\hypertarget{util_8c_a81f8b753fa3af751d39ae3ffdddb5bbd}{}\index{util.\+c@{util.\+c}!wait\+\_\+ms@{wait\+\_\+ms}}
+\index{wait\+\_\+ms@{wait\+\_\+ms}!util.\+c@{util.\+c}}
+\subsubsection[{wait\+\_\+ms(unsigned int time\+\_\+val)}]{\setlength{\rightskip}{0pt plus 5cm}void wait\+\_\+ms (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{time\+\_\+val}
+\end{DoxyParamCaption}
+)}\label{util_8c_a81f8b753fa3af751d39ae3ffdddb5bbd}
+
+
+Blocks for a specified number of milliseconds. 
+
+This method blocks for a specified number of milliseconds. \begin{DoxyAuthor}{Author}
+Robert Guetzlaff 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+val} & The amount of time in milliseconds to block \\
+\hline
+\end{DoxyParams}
+\begin{DoxyDate}{Date}
+7/6/2016 
+\end{DoxyDate}
+Setting O\+C value for time requested Clock is 16 M\+Hz. At a pre-\/scaler of 64, 250 timer ticks = 1ms. 

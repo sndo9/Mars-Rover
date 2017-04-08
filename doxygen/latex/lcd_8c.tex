@@ -1,0 +1,244 @@
+\hypertarget{lcd_8c}{}\section{lcd.\+c File Reference}
+\label{lcd_8c}\index{lcd.\+c@{lcd.\+c}}
+
+
+functions for displaying content to the L\+C\+D screen  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{lcd_8c_aaabda7c2722dfdad3fb406e186be4d2d}{}\#define {\bfseries H\+D\+\_\+\+L\+C\+D\+\_\+\+C\+L\+E\+A\+R}~0x01\label{lcd_8c_aaabda7c2722dfdad3fb406e186be4d2d}
+
+\item 
+\hypertarget{lcd_8c_a4ef1551f87724c3ac1e449b22bf7d138}{}\#define {\bfseries H\+D\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+H\+O\+M\+E}~0x02\label{lcd_8c_a4ef1551f87724c3ac1e449b22bf7d138}
+
+\item 
+\hypertarget{lcd_8c_a51df3b1bb8cd82859b25c897dfdf2fbb}{}\#define {\bfseries H\+D\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+S\+H\+I\+F\+T\+\_\+\+D\+E\+C}~0x05\label{lcd_8c_a51df3b1bb8cd82859b25c897dfdf2fbb}
+
+\item 
+\hypertarget{lcd_8c_a72595f0ec85ae5b90e3bdd46f0c17eb2}{}\#define {\bfseries H\+D\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+S\+H\+I\+F\+T\+\_\+\+I\+N\+C}~0x07\label{lcd_8c_a72595f0ec85ae5b90e3bdd46f0c17eb2}
+
+\item 
+\hypertarget{lcd_8c_a58b0868e2e6ef863c909620296cb0b90}{}\#define {\bfseries H\+D\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+C\+O\+N\+T\+R\+O\+L}~3\label{lcd_8c_a58b0868e2e6ef863c909620296cb0b90}
+
+\item 
+\hypertarget{lcd_8c_a311d37e515d8595f0bc9cd66ea9826c3}{}\#define {\bfseries H\+D\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+N}~2\label{lcd_8c_a311d37e515d8595f0bc9cd66ea9826c3}
+
+\item 
+\hypertarget{lcd_8c_aea4c4faf14e470e4305b4d0d52970ce6}{}\#define {\bfseries H\+D\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+O\+N}~1\label{lcd_8c_aea4c4faf14e470e4305b4d0d52970ce6}
+
+\item 
+\hypertarget{lcd_8c_a6772c96a092ba214fd9f7ccae9720b38}{}\#define {\bfseries H\+D\+\_\+\+B\+L\+I\+N\+K\+\_\+\+O\+N}~0\label{lcd_8c_a6772c96a092ba214fd9f7ccae9720b38}
+
+\item 
+\hypertarget{lcd_8c_a34ea6729c3f96d0fc4daadfdf8b2d9d7}{}\#define {\bfseries H\+D\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+M\+O\+V\+E\+\_\+\+L\+E\+F\+T}~0x10\label{lcd_8c_a34ea6729c3f96d0fc4daadfdf8b2d9d7}
+
+\item 
+\hypertarget{lcd_8c_a153b3bd178fbca97e5313ff29a640aad}{}\#define {\bfseries H\+D\+\_\+\+C\+U\+R\+S\+O\+R\+\_\+\+M\+O\+V\+E\+\_\+\+R\+I\+G\+H\+T}~0x14\label{lcd_8c_a153b3bd178fbca97e5313ff29a640aad}
+
+\item 
+\hypertarget{lcd_8c_a9f297b248deaba17c2476cf6a639f807}{}\#define {\bfseries H\+D\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+S\+H\+I\+F\+T\+\_\+\+L\+E\+F\+T}~0x18\label{lcd_8c_a9f297b248deaba17c2476cf6a639f807}
+
+\item 
+\hypertarget{lcd_8c_a79ed1fe715d9c516a784b53419a16990}{}\#define {\bfseries H\+D\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+S\+H\+I\+F\+T\+\_\+\+R\+I\+G\+H\+T}~0x1\+C\label{lcd_8c_a79ed1fe715d9c516a784b53419a16990}
+
+\item 
+\hypertarget{lcd_8c_a19693eac3018d3e7800fde141921b812}{}\#define {\bfseries L\+C\+D\+\_\+\+W\+I\+D\+T\+H}~20\label{lcd_8c_a19693eac3018d3e7800fde141921b812}
+
+\item 
+\hypertarget{lcd_8c_a53a8b2a971de4b88047192655a48b651}{}\#define {\bfseries L\+C\+D\+\_\+\+H\+E\+I\+G\+H\+T}~4\label{lcd_8c_a53a8b2a971de4b88047192655a48b651}
+
+\item 
+\hypertarget{lcd_8c_aa9d8a09151949151e9b1d9a3ddff9e4f}{}\#define {\bfseries L\+C\+D\+\_\+\+T\+O\+T\+A\+L\+\_\+\+C\+H\+A\+R\+S}~(L\+C\+D\+\_\+\+W\+I\+D\+T\+H$\ast$L\+C\+D\+\_\+\+H\+E\+I\+G\+H\+T)\label{lcd_8c_aa9d8a09151949151e9b1d9a3ddff9e4f}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lcd_8c_a0f5c51646758982aeb96aa1665d02878}{lcd\+\_\+toggle\+\_\+clear} (char delay)
+\begin{DoxyCompactList}\small\item\em Triggers loading of bits by L\+C\+D controller and clears bits after toggle. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a8a2df35a5e63e5b4cf6b83ecde35bd02}{lcd\+\_\+home\+\_\+anyloc} (unsigned char location)
+\begin{DoxyCompactList}\small\item\em Sets character position to any valid location. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a6842775ba83d166f02b8fef8bb63b1e6}{lcd\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes P\+O\+R\+T\+A to communicate with L\+C\+D controller. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a1df94c5b595fa706ca7e7d61cad1de86}{lcd\+\_\+command} (char data)
+\begin{DoxyCompactList}\small\item\em Submits command to L\+C\+D controller. \end{DoxyCompactList}\item 
+\hypertarget{lcd_8c_ad235a86241458b1e7b8771688bfdaf9a}{}void \hyperlink{lcd_8c_ad235a86241458b1e7b8771688bfdaf9a}{lcd\+\_\+clear} (void)\label{lcd_8c_ad235a86241458b1e7b8771688bfdaf9a}
+
+\begin{DoxyCompactList}\small\item\em Clears the L\+C\+D. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a6fb9001b70d8f903fedad6ddbf64bde6}{lcd\+\_\+home\+\_\+line1} (void)
+\begin{DoxyCompactList}\small\item\em Sets character position to first line first position. \end{DoxyCompactList}\item 
+\hypertarget{lcd_8c_ad2c1324ade2f6bff55337cea3ca5b351}{}void \hyperlink{lcd_8c_ad2c1324ade2f6bff55337cea3ca5b351}{lcd\+\_\+home\+\_\+line2} (void)\label{lcd_8c_ad2c1324ade2f6bff55337cea3ca5b351}
+
+\begin{DoxyCompactList}\small\item\em Sets character position to second line first position. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_ad90b0c9fd11ce24e395f07dbe5617b1f}{lcd\+\_\+home\+\_\+line3} (void)
+\begin{DoxyCompactList}\small\item\em Sets character position to third line first position. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a55c2a679388a5c8c7314aa4c494a60c6}{lcd\+\_\+home\+\_\+line4} (void)
+\begin{DoxyCompactList}\small\item\em Sets character position to fourth line first position. \end{DoxyCompactList}\item 
+\hypertarget{lcd_8c_a9b86fcd0bce209f23ad6ca9c9693e410}{}void \hyperlink{lcd_8c_a9b86fcd0bce209f23ad6ca9c9693e410}{lcd\+\_\+display\+\_\+shift\+\_\+left} (void)\label{lcd_8c_a9b86fcd0bce209f23ad6ca9c9693e410}
+
+\begin{DoxyCompactList}\small\item\em Shift display content left. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a1b92979dc26ecdb2a39ec2d554aa8dd5}{lcd\+\_\+puts} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Prints string to L\+C\+D, starting at the current cursor position. \end{DoxyCompactList}\item 
+\hypertarget{lcd_8c_a1b59543ebb020ae74d6bcdf06e2b6d3b}{}void \hyperlink{lcd_8c_a1b59543ebb020ae74d6bcdf06e2b6d3b}{lcd\+\_\+putc} (char data)\label{lcd_8c_a1b59543ebb020ae74d6bcdf06e2b6d3b}
+
+\begin{DoxyCompactList}\small\item\em Prints one character at the current cursor position. \end{DoxyCompactList}\item 
+void \hyperlink{lcd_8c_a575d444e546b50b599790bb52b0891fc}{lprintf} (const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em Print a formatted string to the L\+C\+D screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+functions for displaying content to the L\+C\+D screen 
+
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+06/26/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{lcd_8c_a1df94c5b595fa706ca7e7d61cad1de86}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+command@{lcd\+\_\+command}}
+\index{lcd\+\_\+command@{lcd\+\_\+command}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+command(char data)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char}]{data}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a1df94c5b595fa706ca7e7d61cad1de86}
+
+
+Submits command to L\+C\+D controller. 
+
+P\+A4 is tied to Register Select
+
+Setting register select low for command mode
+
+Setting register select high for character mode \hypertarget{lcd_8c_a8a2df35a5e63e5b4cf6b83ecde35bd02}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+home\+\_\+anyloc@{lcd\+\_\+home\+\_\+anyloc}}
+\index{lcd\+\_\+home\+\_\+anyloc@{lcd\+\_\+home\+\_\+anyloc}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+home\+\_\+anyloc(unsigned char location)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+home\+\_\+anyloc (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{location}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a8a2df35a5e63e5b4cf6b83ecde35bd02}
+
+
+Sets character position to any valid location. 
+
+Addresses are limitted to 0x00 -\/ 0x67
+
+Setting the first bit to one, thus forming a D\+D\+R\+A\+M set address instruction \hypertarget{lcd_8c_a6fb9001b70d8f903fedad6ddbf64bde6}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+home\+\_\+line1@{lcd\+\_\+home\+\_\+line1}}
+\index{lcd\+\_\+home\+\_\+line1@{lcd\+\_\+home\+\_\+line1}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+home\+\_\+line1(void)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+home\+\_\+line1 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a6fb9001b70d8f903fedad6ddbf64bde6}
+
+
+Sets character position to first line first position. 
+
+Sets cursor position to left side of a given line. \hypertarget{lcd_8c_ad90b0c9fd11ce24e395f07dbe5617b1f}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+home\+\_\+line3@{lcd\+\_\+home\+\_\+line3}}
+\index{lcd\+\_\+home\+\_\+line3@{lcd\+\_\+home\+\_\+line3}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+home\+\_\+line3(void)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+home\+\_\+line3 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_ad90b0c9fd11ce24e395f07dbe5617b1f}
+
+
+Sets character position to third line first position. 
+
+First bit relevant to the set D\+D\+R\+A\+M address instruction. The remaining bits designate address, which is 0x14. \hypertarget{lcd_8c_a55c2a679388a5c8c7314aa4c494a60c6}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+home\+\_\+line4@{lcd\+\_\+home\+\_\+line4}}
+\index{lcd\+\_\+home\+\_\+line4@{lcd\+\_\+home\+\_\+line4}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+home\+\_\+line4(void)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+home\+\_\+line4 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a55c2a679388a5c8c7314aa4c494a60c6}
+
+
+Sets character position to fourth line first position. 
+
+First bit relevant to the set D\+D\+R\+A\+M address instruction. The remaining bits designate address, which is 0x54. \hypertarget{lcd_8c_a6842775ba83d166f02b8fef8bb63b1e6}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+init@{lcd\+\_\+init}}
+\index{lcd\+\_\+init@{lcd\+\_\+init}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+init(void)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a6842775ba83d166f02b8fef8bb63b1e6}
+
+
+Initializes P\+O\+R\+T\+A to communicate with L\+C\+D controller. 
+
+P\+A6 is tied to Enable
+
+P\+A4 is tied to Register Select
+
+Assumes Port A is dedicated to the L\+C\+D Seven Pins needed, but will assume all 8 are used
+
+Setting Port A for Out\+Put
+
+Preparing to put H\+D44780 into 4-\/bit Mod
+
+Setting controller to 4 bit mode Need to set for 2 lines
+
+Setting display on, cursor on, blink off
+
+Increment cursor, no display shift
+
+Clear L\+C\+D
+
+Setting Register select high to enable character mode \hypertarget{lcd_8c_a1b92979dc26ecdb2a39ec2d554aa8dd5}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+puts@{lcd\+\_\+puts}}
+\index{lcd\+\_\+puts@{lcd\+\_\+puts}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+puts(char $\ast$string)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+puts (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a1b92979dc26ecdb2a39ec2d554aa8dd5}
+
+
+Prints string to L\+C\+D, starting at the current cursor position. 
+
+Prints a string of characters starting at the current cursor position. \hypertarget{lcd_8c_a0f5c51646758982aeb96aa1665d02878}{}\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+toggle\+\_\+clear@{lcd\+\_\+toggle\+\_\+clear}}
+\index{lcd\+\_\+toggle\+\_\+clear@{lcd\+\_\+toggle\+\_\+clear}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lcd\+\_\+toggle\+\_\+clear(char delay)}]{\setlength{\rightskip}{0pt plus 5cm}void lcd\+\_\+toggle\+\_\+clear (
+\begin{DoxyParamCaption}
+\item[{char}]{delay}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a0f5c51646758982aeb96aa1665d02878}
+
+
+Triggers loading of bits by L\+C\+D controller and clears bits after toggle. 
+
+P\+A6 is tied to Enable \hypertarget{lcd_8c_a575d444e546b50b599790bb52b0891fc}{}\index{lcd.\+c@{lcd.\+c}!lprintf@{lprintf}}
+\index{lprintf@{lprintf}!lcd.\+c@{lcd.\+c}}
+\subsubsection[{lprintf(const char $\ast$format,...)}]{\setlength{\rightskip}{0pt plus 5cm}void lprintf (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\label{lcd_8c_a575d444e546b50b599790bb52b0891fc}
+
+
+Print a formatted string to the L\+C\+D screen. 
+
+Prints a string to the lcd; Google \char`\"{}printf\char`\"{} for documentation.
+
+Mimics the C library function printf for writing to the L\+C\+D screen. The function is buffered; i.\+e. if you call lprintf twice with the same string, it will only update the L\+C\+D the first time.
+
+Google \char`\"{}printf\char`\"{} for documentation on the formatter string.
+
+Code from this site was also used\+: \href{http://www.ozzu.com/cpp-tutorials/tutorial-writing-custom-printf-wrapper-function-t89166.html}{\tt http\+://www.\+ozzu.\+com/cpp-\/tutorials/tutorial-\/writing-\/custom-\/printf-\/wrapper-\/function-\/t89166.\+html} \begin{DoxyAuthor}{Author}
+Kerrick Staley \& Chad Nelson 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+05/16/2012 
+\end{DoxyDate}
